@@ -28,15 +28,20 @@ jQuery(document).ready(function () {
 
 		block.text(shortText);
 
-		block.append('<p class = "faa_truncate_text__read_all">' + readAll + '</p>');
+		if(block.find('.faa_truncate_text__read_all').length == 0) {
+			block.append('<p class = "faa_truncate_text__read_all">' + readAll + '</p>');
+		}
+
 	}
 	
 
-	$('.faa_truncate_text__read_all').click(function() {
+	$('body').on('click', '.faa_truncate_text__read_all', function() {
 		console.log('click to .faa_truncate_text__read_all');
 		var block = $(this).closest('.faa_truncate_text');
 		block.html(block.data('text'));
-		block.append('<p class = "faa_truncate_text__hidden">Скрыть</p>')
+		if(block.find('.faa_truncate_text__hidden').length == 0) {
+			block.append('<p class = "faa_truncate_text__hidden">Скрыть</p>');
+		}
 	});
 
 	$('body').on('click', '.faa_truncate_text__hidden', function() {
